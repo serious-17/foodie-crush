@@ -8,6 +8,7 @@
 
 body {
   font-family: "Inter", sans-serif;
+  background: #e0dde0;
 }
 
 input,
@@ -34,4 +35,8 @@ button {
 svg,
 img {
   pointer-events: none;
+}
+
+a {
+  text-decoration: none;
 }

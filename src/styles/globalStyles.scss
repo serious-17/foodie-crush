@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Pacifico&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+input,
+button {
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-family: "Pacifico", sans-serif;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg,
+img {
+  pointer-events: none;
+}

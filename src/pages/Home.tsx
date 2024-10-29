@@ -35,7 +35,6 @@ const Home = () => {
                   {data.searchData.map((recipe: any) => (
                     <Recipe
                       style={style}
-                      recipe={recipe}
                       key={recipe.id}
                       image={recipe.image_url}
                       title={recipe.title}
@@ -54,7 +53,6 @@ const Home = () => {
                 {data.recipeData.map((recipe: any) => (
                   <Recipe
                     style={style}
-                    recipe={recipe}
                     key={recipe.id}
                     image={recipe.image_url}
                     title={recipe.title}

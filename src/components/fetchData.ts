@@ -10,7 +10,7 @@ const fetchData = async (query: any, data: any, setData: Function) => {
     const apiData = await axios.get(initialURL(searched));
     setData({
       ...data,
-      searchedData: apiData.data.data.recipes,
+      searchData: apiData.data.data.recipes,
       isLoading: false,
     });
   } else {

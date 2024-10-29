@@ -1,12 +1,14 @@
+import { motion } from "framer-motion";
+
 const Recipe = ({ recipe, id, image, title, publisher, style }: any) => {
   return (
-    <div className={style.recipe}>
+    <motion.div layoutId={`${id}`} className={style.recipe}>
       <img src={image} alt="" />
       <div className={style.title}>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <h4>{publisher}</h4>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

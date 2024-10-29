@@ -1,6 +1,11 @@
 .home {
   min-height: 100vh;
   padding: 5rem;
+  h2 {
+    padding: 4rem 0rem;
+    font-family: "Pacifico";
+    font-weight: 500;
+  }
 }
 
 .recipes {
@@ -33,7 +38,7 @@
 .title {
   padding: 1rem;
   padding-bottom: 1.5rem;
-  h2 {
+  h3 {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -42,4 +47,15 @@
   h4 {
     padding-top: 1rem;
   }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.recipeList {
+  margin-bottom: 4rem;
 }

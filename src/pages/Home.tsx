@@ -23,7 +23,7 @@ const Home = () => {
           style={{ color: "black" }}
         />
       )}
-      {data.recipeData.length && (
+      {data.recipeData.length ? (
         <div className={style.home}>
           <div className={style.recipes}>
             {data.recipeData.map((recipe: any) => (
@@ -39,6 +39,8 @@ const Home = () => {
             ))}
           </div>
         </div>
+      ) : (
+        ""
       )}
     </>
   );

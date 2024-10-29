@@ -7,12 +7,21 @@ const fetchData = async (query: any, data: any, setData: Function) => {
 
   if (query) {
     searched = query;
+    const apiData = await axios.get(initialURL(searched));
+    setData({
+      ...data,
+      searchedData: apiData.data.data.recipes,
+      isLoading: false,
+    });
   } else {
     searched = "steak";
+    const apiData = await axios.get(initialURL(searched));
+    setData({
+      ...data,
+      recipeData: apiData.data.data.recipes,
+      isLoading: false,
+    });
   }
-
-  const apiData = await axios.get(initialURL(searched));
-  setData({ ...data, recipeData: apiData.data.data.recipes, isLoading: false });
 };
 
 export default fetchData;

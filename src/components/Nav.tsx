@@ -1,17 +1,35 @@
 import logo from "../assets/logo.svg";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import style from "../styles/Nav.module.scss";
+import fetchData from "./fetchData";
+import { useAtom } from "jotai";
+import { apiData } from "./states";
+import { useState } from "react";
 
 const Nav = () => {
+  const [data, setData]: any = useAtom(apiData);
+  const [query, setQuery] = useState("");
+
+  const searchSubmit = (e: any) => {
+    e.preventDefault();
+    fetchData(query, data, setData);
+  };
+
+  const clearSearch = () => {
+    setData({ ...data, searchData: [] });
+  };
+
   return (
     <nav>
-      <div className={style.logo}>
+      <div onClick={clearSearch} className={style.logo}>
         <h1>Foodie Crush</h1>
         <img src={logo} alt="logo" />
       </div>
 
-      <form className={style.searchBar}>
+      <form onSubmit={searchSubmit} className={style.searchBar}>
         <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder="search for a recipe"
           type="text"
           name="search-input"

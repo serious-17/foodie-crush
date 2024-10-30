@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { useAtom } from "jotai";
-import { apiData } from "../components/states";
+import { apiData, currentRecipe } from "../components/states";
 import fetchData from "../components/fetchData";
 import style from "../styles/Home.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Recipe from "../components/Recipe";
 import { LayoutGroup } from "framer-motion";
+import RecipeDetails from "../components/RecipeDetails";
 
 const Home = () => {
-  const [data, setData]: any = useAtom(apiData);
+  const [data, setData] = useAtom(apiData);
+  const [recipe] = useAtom(currentRecipe);
 
   useEffect(() => {
     fetchData(null, data, setData);
@@ -26,6 +28,7 @@ const Home = () => {
         />
       )}
       <LayoutGroup>
+        {!recipe.isLoading && <RecipeDetails />}
         {data.recipeData.length ? (
           <div className={style.home}>
             {data.searchData.length ? (

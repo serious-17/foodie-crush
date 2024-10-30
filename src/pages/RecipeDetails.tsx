@@ -1,10 +1,10 @@
 import { useAtom } from "jotai";
-import { currentRecipe } from "./states";
+import { currentRecipe } from "../components/states";
 import { motion } from "framer-motion";
 import { v4 as uuid } from "uuid";
 
 const RecipeDetails = () => {
-  const [recipe, setRecipe]: any = useAtom(currentRecipe);
+  const [recipe]: any = useAtom(currentRecipe);
 
   const { recipeData } = recipe;
 

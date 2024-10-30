@@ -6,14 +6,23 @@ import style from "../styles/Home.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Recipe from "../components/Recipe";
 import { LayoutGroup } from "framer-motion";
-import RecipeDetails from "../components/RecipeDetails";
+import RecipeDetails from "./RecipeDetails";
+import { useLocation } from "react-router-dom";
+import fetchCurrentRecipe from "../components/fetchCurrentRecipe";
 
 const Home = () => {
   const [data, setData] = useAtom(apiData);
   const [recipe] = useAtom(currentRecipe);
+  const [current, setCurrent]: any = useAtom(currentRecipe);
+  const location = useLocation();
+  let id = location.pathname.split("/")[2];
 
   useEffect(() => {
     fetchData(null, data, setData);
+    if (!current.recipeData.servings) {
+      if (!id) return;
+      fetchCurrentRecipe(id, current, setCurrent);
+    }
   }, []);
 
   return (
@@ -28,7 +37,7 @@ const Home = () => {
         />
       )}
       <LayoutGroup>
-        {!recipe.isLoading && <RecipeDetails />}
+        {!recipe.isLoading && id && <RecipeDetails />}
         {data.recipeData.length ? (
           <div className={style.home}>
             {data.searchData.length ? (

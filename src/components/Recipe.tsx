@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import fetchCurrentRecipe from "./fetchCurrentRecipe";
 import { currentRecipe } from "./states";
 import { useAtom } from "jotai";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   id: number;
@@ -13,10 +14,11 @@ type Props = {
 
 const Recipe = ({ id, image, title, publisher, style }: Props) => {
   const [data, setData] = useAtom(currentRecipe);
+  const navigate = useNavigate();
 
   const getData = () => {
     fetchCurrentRecipe(id, data, setData);
-    console.log(data);
+    navigate(`/recipe/${id}`);
   };
 
   return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { initialURL } from "../api";
 
-const fetchData = async (query: any, data: any, setData: Function) => {
+const fetchData = async (query: any, data: Object, setData: Function) => {
   let searched: string;
   setData({ ...data, isLoading: true });
 

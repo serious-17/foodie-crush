@@ -1,0 +1,15 @@
+.favourite {
+  padding: 5rem 10rem;
+  h2 {
+    padding: 4rem 0rem;
+    font-family: "Pacifico", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.recipeList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  column-gap: 3rem;
+  row-gap: 4rem;
+}

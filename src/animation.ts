@@ -18,9 +18,11 @@ export const pageAnim = {
 export const recipeAnim = {
   hidden: {
     scale: 0.5,
+    opacity: 0,
   },
   show: {
     scale: 1,
+    opacity: 1,
     transition: { duration: 1 },
   },
 };

@@ -5,7 +5,7 @@ import fetchData from "./fetchData";
 import { useAtom } from "jotai";
 import { apiData } from "./states";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const Nav = () => {
   const [data, setData]: any = useAtom(apiData);
@@ -49,7 +49,9 @@ const Nav = () => {
         </button>
       </form>
 
-      <h3>Favourites</h3>
+      <Link to={"/favourites"}>
+        <h3>Favourites</h3>
+      </Link>
     </nav>
   );
 };

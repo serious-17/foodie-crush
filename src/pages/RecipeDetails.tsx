@@ -5,12 +5,17 @@ import { v4 as uuid } from "uuid";
 import style from "../styles/RecipeDetails.module.scss";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { fade, pageAnim } from "../animation";
+import { useEffect, useState } from "react";
 
 const RecipeDetails = () => {
   const [recipe]: any = useAtom(currentRecipe);
   const { recipeData } = recipe;
   const navigate = useNavigate();
+  const [favourite, setFavoutite] = useState(false);
+
+  useEffect(() => {
+    checkFav();
+  }, []);
 
   const getTime = (time: number) => {
     let formatTime;
@@ -40,12 +45,46 @@ const RecipeDetails = () => {
   };
 
   const closeDetails = (e: any) => {
-    console.log(e.target);
     if (
       e.target.classList.contains("container") ||
       e.target.classList.contains("close")
     ) {
       navigate("/");
+    }
+  };
+
+  const checkFav = () => {
+    let favourites = JSON.parse(localStorage.getItem("recipes") ?? "[]");
+    let current;
+
+    if (favourites.length) {
+      current = favourites.find((a: any) => a === `${recipeData.id}`);
+    }
+
+    if (current) {
+      setFavoutite(true);
+    } else {
+      setFavoutite(false);
+    }
+  };
+
+  const toggleFavourite = () => {
+    let favourites = JSON.parse(localStorage.getItem("recipes") ?? "[]");
+    let current;
+
+    if (favourites.length) {
+      current = favourites.find((a: any) => a === `${recipeData.id}`);
+    }
+
+    if (current) {
+      favourites.splice(current, 1);
+      localStorage.setItem("recipes", JSON.stringify(favourites));
+      setFavoutite(false);
+    } else {
+      current = `${recipeData.id}`;
+      favourites.push(current);
+      localStorage.setItem("recipes", JSON.stringify(favourites));
+      setFavoutite(true);
     }
   };
 
@@ -80,7 +119,9 @@ const RecipeDetails = () => {
                 {recipeData.publisher}
               </a>
             </p>
-            <button>Add to favourites</button>
+            <button onClick={toggleFavourite}>
+              {favourite ? "Remove from favourites" : "Add to favourites"}
+            </button>
           </div>
         </div>
         <h2>Ingredients: {recipeData.ingredients.length}</h2>

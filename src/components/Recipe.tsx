@@ -4,16 +4,16 @@ import { currentRecipe } from "./states";
 import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
 import { recipeAnim } from "../animation";
+import style from "../styles/Recipe.module.scss";
 
 type Props = {
   id: number;
   image: string;
   title: string;
   publisher: string;
-  style: CSSModuleClasses;
 };
 
-const Recipe = ({ id, image, title, publisher, style }: Props) => {
+const Recipe = ({ id, image, title, publisher }: Props) => {
   const [data, setData] = useAtom(currentRecipe);
   const navigate = useNavigate();
 

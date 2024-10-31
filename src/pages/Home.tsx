@@ -60,7 +60,6 @@ const Home = () => {
                 <div className={style.recipes}>
                   {data.searchData.map((recipe: any) => (
                     <Recipe
-                      style={style}
                       key={recipe.id}
                       image={recipe.image_url}
                       title={recipe.title}
@@ -74,11 +73,10 @@ const Home = () => {
               ""
             )}
             <div className={style.recipeList}>
-              <h2>Recipes</h2>
+              <motion.h2 layout>Recipes</motion.h2>
               <div className={style.recipes}>
                 {data.recipeData.map((recipe: any) => (
                   <Recipe
-                    style={style}
                     key={recipe.id}
                     image={recipe.image_url}
                     title={recipe.title}

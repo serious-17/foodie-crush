@@ -3,6 +3,7 @@ import fetchCurrentRecipe from "./fetchCurrentRecipe";
 import { currentRecipe } from "./states";
 import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
+import { recipeAnim } from "../animation";
 
 type Props = {
   id: number;
@@ -22,7 +23,14 @@ const Recipe = ({ id, image, title, publisher, style }: Props) => {
   };
 
   return (
-    <motion.div onClick={getData} layoutId={`${id}`} className={style.recipe}>
+    <motion.div
+      variants={recipeAnim}
+      initial="hidden"
+      animate="show"
+      onClick={getData}
+      layoutId={`${id}`}
+      className={style.recipe}
+    >
       <motion.img layoutId={`image ${id}`} src={image} alt="" />
       <div className={style.title}>
         <motion.h3 layoutId={`title ${id}`}>{title}</motion.h3>

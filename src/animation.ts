@@ -14,3 +14,13 @@ export const pageAnim = {
     transition: { duration: 0.5 },
   },
 };
+
+export const recipeAnim = {
+  hidden: {
+    scale: 0.5,
+  },
+  show: {
+    scale: 1,
+    transition: { duration: 1 },
+  },
+};

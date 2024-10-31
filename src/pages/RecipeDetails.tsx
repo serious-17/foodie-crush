@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import style from "../styles/RecipeDetails.module.scss";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { fade, pageAnim } from "../animation";
 
 const RecipeDetails = () => {
   const [recipe]: any = useAtom(currentRecipe);
@@ -39,6 +40,7 @@ const RecipeDetails = () => {
   };
 
   const closeDetails = (e: any) => {
+    console.log(e.target);
     if (
       e.target.classList.contains("container") ||
       e.target.classList.contains("close")
@@ -78,6 +80,7 @@ const RecipeDetails = () => {
                 {recipeData.publisher}
               </a>
             </p>
+            <button>Add to favourites</button>
           </div>
         </div>
         <h2>Ingredients: {recipeData.ingredients.length}</h2>

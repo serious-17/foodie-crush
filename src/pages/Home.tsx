@@ -9,6 +9,8 @@ import { LayoutGroup } from "framer-motion";
 import RecipeDetails from "./RecipeDetails";
 import { useLocation } from "react-router-dom";
 import fetchCurrentRecipe from "../components/fetchCurrentRecipe";
+import { motion } from "framer-motion";
+import { pageAnim } from "../animation";
 
 const Home = () => {
   const [data, setData] = useAtom(apiData);
@@ -44,7 +46,13 @@ const Home = () => {
       )}
       <LayoutGroup>
         {data.recipeData.length ? (
-          <div className={style.home}>
+          <motion.div
+            variants={pageAnim}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            className={style.home}
+          >
             {!recipe.isLoading && id && <RecipeDetails />}
             {data.searchData.length ? (
               <div className={style.recipeList}>
@@ -80,7 +88,7 @@ const Home = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ) : (
           ""
         )}

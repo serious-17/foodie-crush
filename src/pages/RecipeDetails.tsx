@@ -51,7 +51,7 @@ const RecipeDetails = () => {
             <motion.h3 layoutId={`title ${recipeData.id}`}>
               {recipeData.title}
             </motion.h3>
-            <p>Cooking Time: {getTime(recipeData.cooking_time)}</p>
+            <p>Cooking Time: {getTime(recipeData.cooking_time)} Hours</p>
             <p>Servings: {recipeData.servings}</p>
 
             <p>
@@ -62,16 +62,20 @@ const RecipeDetails = () => {
             </p>
           </div>
         </div>
-        <h2>Ingredients:</h2>
+        <h2>Ingredients: {recipeData.ingredients.length}</h2>
         <div className={style.ingredients}>
-          {recipeData.ingredients.map((ing: any) => (
-            <div className={style.ingredient} key={uuid()}>
-              <h3>
-                {checkInfo(ing.quantity)} {checkInfo(ing.unit)}
-              </h3>
-              <h4>{checkInfo(ing.description)}</h4>
-            </div>
-          ))}
+          <ul>
+            {recipeData.ingredients.map((ing: any) => (
+              <div className={style.ingredient} key={uuid()}>
+                <li>
+                  <p>
+                    {checkInfo(ing.quantity)} {checkInfo(ing.unit)}{" "}
+                    {checkInfo(ing.description)}
+                  </p>
+                </li>
+              </div>
+            ))}
+          </ul>
         </div>
       </motion.div>
     </div>

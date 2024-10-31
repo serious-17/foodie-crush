@@ -12,12 +12,13 @@
   h2 {
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    padding-left: 2rem;
+    padding: 8rem 0rem 0rem 2rem;
   }
 }
 
 .background {
   background: white;
+  padding-bottom: 2rem;
   cursor: auto;
 }
 
@@ -54,11 +55,8 @@
 
 .ingredients {
   padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .ingredient {
-  background: rgb(235, 235, 235);
-  border-radius: 1rem;
+  padding: 1.5rem 1rem;
 }

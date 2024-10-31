@@ -5,10 +5,12 @@ import fetchData from "./fetchData";
 import { useAtom } from "jotai";
 import { apiData } from "./states";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Nav = () => {
   const [data, setData]: any = useAtom(apiData);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const searchSubmit = (e: any) => {
     clearSearch();
@@ -18,6 +20,7 @@ const Nav = () => {
 
   const clearSearch = () => {
     setData({ ...data, searchData: [] });
+    navigate("/");
   };
 
   return (

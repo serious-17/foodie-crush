@@ -23,9 +23,9 @@ const Recipe = ({ id, image, title, publisher, style }: Props) => {
 
   return (
     <motion.div onClick={getData} layoutId={`${id}`} className={style.recipe}>
-      <img src={image} alt="" />
+      <motion.img layoutId={`image ${id}`} src={image} alt="" />
       <div className={style.title}>
-        <h3>{title}</h3>
+        <motion.h3 layoutId={`title ${id}`}>{title}</motion.h3>
         <h4>{publisher}</h4>
       </div>
     </motion.div>

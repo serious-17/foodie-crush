@@ -1,0 +1,64 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: 0.25);
+  display: inline-block;
+  padding: 5rem 10rem;
+  overflow-x: hidden;
+  cursor: pointer;
+  h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    padding-left: 2rem;
+  }
+}
+
+.background {
+  background: white;
+  cursor: auto;
+}
+
+.details {
+  display: flex;
+}
+
+.image {
+  flex: 1;
+  img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    z-index: 5;
+    position: relative;
+  }
+}
+
+.description {
+  flex: 1;
+  padding: 2rem;
+  padding-left: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  p {
+    line-height: 300%;
+  }
+}
+
+.ingredients {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.ingredient {
+  background: rgb(235, 235, 235);
+  border-radius: 1rem;
+}

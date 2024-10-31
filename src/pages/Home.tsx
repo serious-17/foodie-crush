@@ -17,6 +17,12 @@ const Home = () => {
   const location = useLocation();
   let id = location.pathname.split("/")[2];
 
+  if (id) {
+    document.body.style.overflow = `hidden`;
+  } else {
+    document.body.style.overflow = `auto`;
+  }
+
   useEffect(() => {
     fetchData(null, data, setData);
     if (!current.recipeData.servings) {
@@ -37,9 +43,9 @@ const Home = () => {
         />
       )}
       <LayoutGroup>
-        {!recipe.isLoading && id && <RecipeDetails />}
         {data.recipeData.length ? (
           <div className={style.home}>
+            {!recipe.isLoading && id && <RecipeDetails />}
             {data.searchData.length ? (
               <div className={style.recipeList}>
                 <h2>Searched</h2>

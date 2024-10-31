@@ -1,9 +1,10 @@
 .home {
   min-height: 100vh;
   padding: 5rem;
+  position: relative;
   h2 {
     padding: 4rem 0rem;
-    font-family: "Pacifico";
+    font-family: "Pacifico", sans-serif;
     font-weight: 500;
   }
 }

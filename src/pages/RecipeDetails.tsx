@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { currentRecipe } from "../components/states";
 import { motion } from "framer-motion";
 import { v4 as uuid } from "uuid";
+import style from "../styles/RecipeDetails.module.scss";
 
 const RecipeDetails = () => {
   const [recipe]: any = useAtom(currentRecipe);
@@ -36,30 +37,35 @@ const RecipeDetails = () => {
   };
 
   return (
-    <motion.div layoutId={`${recipeData.id}`} className="container">
-      <div className="background">
-        <div className="details">
-          <div className="recipe">
-            <div className="image">
-              <img src={recipeData.image_url} alt="" />
-            </div>
-            <div className="description">
-              <h2>{recipeData.title}</h2>
-              <p>Cooking Time: {getTime(recipeData.cooking_time)}</p>
-              <p>Servings: {recipeData.servings}</p>
+    <div className={style.container}>
+      <motion.div layoutId={`${recipeData.id}`} className={style.background}>
+        <div className={style.details}>
+          <div className={style.image}>
+            <motion.img
+              layoutId={`image ${recipeData.id}`}
+              src={recipeData.image_url}
+              alt=""
+            />
+          </div>
+          <div className={style.description}>
+            <motion.h3 layoutId={`title ${recipeData.id}`}>
+              {recipeData.title}
+            </motion.h3>
+            <p>Cooking Time: {getTime(recipeData.cooking_time)}</p>
+            <p>Servings: {recipeData.servings}</p>
 
-              <p>
-                Source:{" "}
-                <a href={recipeData.source_url} target="_blank">
-                  {recipeData.publisher}
-                </a>
-              </p>
-            </div>
+            <p>
+              Source:{" "}
+              <a href={recipeData.source_url} target="_blank">
+                {recipeData.publisher}
+              </a>
+            </p>
           </div>
         </div>
-        <div className="ingredients">
+        <h2>Ingredients:</h2>
+        <div className={style.ingredients}>
           {recipeData.ingredients.map((ing: any) => (
-            <div className="ingredient" key={uuid()}>
+            <div className={style.ingredient} key={uuid()}>
               <h3>
                 {checkInfo(ing.quantity)} {checkInfo(ing.unit)}
               </h3>
@@ -67,8 +73,8 @@ const RecipeDetails = () => {
             </div>
           ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

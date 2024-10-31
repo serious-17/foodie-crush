@@ -3,11 +3,13 @@ import { currentRecipe } from "../components/states";
 import { motion } from "framer-motion";
 import { v4 as uuid } from "uuid";
 import style from "../styles/RecipeDetails.module.scss";
+import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const RecipeDetails = () => {
   const [recipe]: any = useAtom(currentRecipe);
-
   const { recipeData } = recipe;
+  const navigate = useNavigate();
 
   const getTime = (time: number) => {
     let formatTime;
@@ -36,9 +38,25 @@ const RecipeDetails = () => {
     return info;
   };
 
+  const closeDetails = (e: any) => {
+    if (
+      e.target.classList.contains("container") ||
+      e.target.classList.contains("close")
+    ) {
+      navigate("/");
+    }
+  };
+
   return (
-    <div className={style.container}>
+    <div onClick={closeDetails} className={`${style.container} container`}>
       <motion.div layoutId={`${recipeData.id}`} className={style.background}>
+        <Icon
+          className={`${style.close} close`}
+          icon="line-md:close-small"
+          width="3rem"
+          height="3rem"
+          style={{ color: "black" }}
+        />
         <div className={style.details}>
           <div className={style.image}>
             <motion.img

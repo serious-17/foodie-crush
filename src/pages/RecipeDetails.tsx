@@ -71,14 +71,15 @@ const RecipeDetails = () => {
   const toggleFavourite = () => {
     let favourites = JSON.parse(localStorage.getItem("recipes") ?? "[]");
     let current;
+    let newFav;
 
     if (favourites.length) {
       current = favourites.find((a: any) => a === `${recipeData.id}`);
+      newFav = favourites.filter((a: any) => a !== `${recipeData.id}`);
     }
 
     if (current) {
-      favourites.splice(current, 1);
-      localStorage.setItem("recipes", JSON.stringify(favourites));
+      localStorage.setItem("recipes", JSON.stringify(newFav));
       setFavoutite(false);
     } else {
       current = `${recipeData.id}`;
